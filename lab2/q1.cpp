@@ -19,6 +19,9 @@ class LinkedList {
 public:
     Node* head = nullptr;  // Pointer to the first node in the list
 
+    //constructor
+    LinkedList():head(nullptr){}
+    
     // Function to insert a new node at the head of the list
     void insertHead(int x) {
         Node* newNode = new Node(x);  // Create a new node

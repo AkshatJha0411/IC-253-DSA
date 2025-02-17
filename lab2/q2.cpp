@@ -27,21 +27,10 @@ public:
     }
 
     // Function to construct a doubly linked list from an array
-    Node* construct(int arr[], int size) {
-        if (size == 0) return nullptr;  // If array is empty, return nullptr
-
-        // Create the first node with the first element of the array
-        head = new Node(arr[0]);
-        Node* temp = head;  // Use 'temp' to traverse and build the list
-
-        // Loop through the array to create and link the remaining nodes
-        for (int i = 1; i < size; i++) {
-            Node* newNode = new Node(arr[i]);  // Create a new node
-            temp->next = newNode;  // Link the new node to the list
-            newNode->prev = temp;  // Link the new node back to the previous node
-            temp = newNode;        // Move 'temp' to the new node
+    void construct(int arr[], int size) {
+        for (int i = 0; i < size; i++) {
+            insertTail(arr[i]);  // Insert each element at the tail
         }
-        return head;  // Return the head of the constructed list
     }
 
     // Function to insert a new node at the head of the list
@@ -163,7 +152,7 @@ int main() {
     int size = sizeof(arr) / sizeof(arr[0]);
 
     // Construct the doubly linked list from the array
-    dll.head = dll.construct(arr, size);
+    dll.construct(arr, size);
 
     // Insert 10 at the head of the list
     dll.insertHead(10);

@@ -78,8 +78,9 @@ public:
             temp = temp->next;
             c++;
         }
-        if (c < k - 1) { // If position is out of bounds
+        if (c < k - 1|| temp->next == head) { // If position is out of bounds
             cout << "Position out of bounds!" << endl;
+            delete newNode;
             return;
         }
         newNode->next = temp->next; // Insert new node between temp and temp->next
@@ -191,7 +192,7 @@ int main() {
 
     cll.insertHead(10); // Insert 10 at the head
     cll.insertTail(20); // Insert 20 at the tail
-    cll.insertK(15, 2); // Insert 15 at index 2
+    cll.insertK(15, 8); // Insert 15 at index 2
     cll.deleteHead(); // Delete the head node
     cll.deleteTail(); // Delete the last node
     cll.deleteK(4); // Delete the node at index 4
