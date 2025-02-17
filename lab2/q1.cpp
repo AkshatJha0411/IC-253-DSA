@@ -19,23 +19,6 @@ class LinkedList {
 public:
     Node* head = nullptr;  // Pointer to the first node in the list
 
-    // Function to construct a linked list from an array
-    Node* construct(int arr[], int size) {
-        if (size == 0) return nullptr;  // If array is empty, return nullptr
-
-        // Create the first node with the first element of the array
-        head = new Node(arr[0]);
-        Node* mover = head;  // Use 'mover' to traverse and build the list
-
-        // Loop through the array to create and link the remaining nodes
-        for (int i = 1; i < size; i++) {
-            Node* temp = new Node(arr[i]);  // Create a new node
-            mover->next = temp;  // Link the new node to the list
-            mover = temp;       // Move 'mover' to the new node
-        }
-        return head;  // Return the head of the constructed list
-    }
-
     // Function to insert a new node at the head of the list
     void insertHead(int x) {
         Node* newNode = new Node(x);  // Create a new node
@@ -55,6 +38,13 @@ public:
             temp = temp->next;  // Traverse to the last node
         }
         temp->next = newNode;  // Link the new node to the end of the list
+    }
+
+    // Function to construct a linked list from an array
+    void construct(int arr[], int size) {
+        for (int i = 0; i < size; i++) {
+            insertTail(arr[i]);
+        }
     }
 
     // Function to insert a new node at a specific position (k) in the list
@@ -145,7 +135,7 @@ int main() {
     int size = sizeof(arr) / sizeof(arr[0]);
 
     // Construct the linked list from the array
-    ll.head = ll.construct(arr, size); 
+    ll.construct(arr, size); 
 
     // Insert 10 at the head of the list
     ll.insertHead(10);
